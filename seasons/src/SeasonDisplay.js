@@ -10,22 +10,26 @@ const seasonConfig = {
     winter:{
         text: "Burr, its chilly!",
         iconName: 'snowflake'
+    },
+    error: {
+        text:"error! Check code",
+        iconName: 'bomb'
     }
 }
 
 
-const getSeason = (month, lat)=>{
-    if(lat > 0 && month > 2 && month < 9){
+const getSeason = (month, lat) => {
+    if(lat < 0 && month > 2 && month < 9){
         return "summer"
     }
-    else if( lat < 0 && month < 2 && month > 9){
+    else if( lat > 0 && month < 2 && month > 9){
        return "winter"
     }
+    return "error"
 }
 
 const SeasonDisplay = (props) => {
     const season = getSeason(props.month, props.lat);
-    // const { text, iconName } = seasonConfig[season]
     const { text, iconName } = seasonConfig[season] || {} // Adding the or here fixes the "unidentified object" error on first render
     return(
         <div className={`season-display ${season}`}>

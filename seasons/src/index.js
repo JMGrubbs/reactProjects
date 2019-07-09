@@ -15,7 +15,7 @@ class App extends React.Component{
         )
     }
 
-    renderContent(){
+    renderComponet(){
         if (this.state.errorMessage && this.state.lat){
             return <div>Error: {this.state.errorMessage}</div>
         }
@@ -24,7 +24,7 @@ class App extends React.Component{
             return <SeasonDisplay month={this.state.month} lat={this.state.lat}/>
         }
 
-        return <Spinner message="please accept location request"/>  
+        return <Spinner message="Please accept location request"/>
     }
 
     // componentWillUpdate(){
@@ -32,9 +32,11 @@ class App extends React.Component{
     // }
 
     render() {
-        return <div className="border red">
-            {this.renderContent()}
-        </div>
+        return(
+            <div className="border red">
+                {this.renderComponet()}
+            </div>
+        )
     }
 }
 

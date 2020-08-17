@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 class SearchBar extends React.Component {
-  OnImputChange = (event) => { 
-    console.log(event.target.value)
-  }
-
+// const SearchBar = () => {
+  // const [term, setTerm] = useState('');
+  state = { term: '' };
   render() {
     return (
       <div className="ui segment">
         <form className="ui form">
           <div className="field">
-            <lable>Image Search</lable>
-            <input id="searchbar" onChange={this.OnImputChange} type="text" />
+            <label>Image Search</label>
+            <input
+              id="searchbar"
+              value={this.state.term}
+              onChange={(e) => this.setState({ term: e.target.value })}
+              onChange={(e) => console.log(this.state.term)}
+              type="text" />
+            {/* <input id="searchbar"
+              onChange={(e) => setTerm(e.target.value)}
+              onChange={(e) => console.log(e.target.value)}
+              type="text" /> */}
           </div>
         </form>
       </div>
